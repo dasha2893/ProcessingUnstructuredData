@@ -1,6 +1,4 @@
-/**
- * Created by max on 11.02.16.
- */
+
 public class TwitterAccount {
     private String consumer_Key;
     private String consumer_Secret;
