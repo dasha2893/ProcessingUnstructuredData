@@ -1,0 +1,20 @@
+vagrant up - в папке vms подымает виртульные машины
+vagrant ssh node1 - заходит в node1
+
+sudo ./sbin/start-master.sh - запуск мастера из папки со spark
+sudo ./sbin/start-slave.sh spark://node1:7077 - запуск slave
+
+node1:8080/ - веб интерфейс spark
+
+#запуск всего кластера
+vagrant@node1:~/spark$ ./sbin/start-all.sh
+  
+#остановка всего кластера
+vagrant@node1:~/spark$ ./sbin/stop-all.sh 	 
+
+
+
+sudo ./bin/spark-submit --master spark://node1:7077 --class Test file:/home/vagrant/project/target/ProcessingUnstructuredData-1.0-SNAPSHOT-allinone.jar
+
+
+

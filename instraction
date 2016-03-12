@@ -9,8 +9,10 @@ sudo apt-get install oracle-java8-installer
 wget http://apache-mirror.rbc.ru/pub/apache/spark/spark-1.6.0/spark-1.6.0-bin-hadoop2.6.tgz - скачиваем spark
 sudo tar zxvf spark-1.6.0-bin-hadoop2.6.tgz - распаковка архива со spark
 sudo rm spark-1.6.0-bin-hadoop2.6.tgz
+sudo mv spark-1.6.0-bin-hadoop2.6.tgz spark
 
-sudo echo "export SPARK_HOME=/home/vagrant/spark-1.6.0-bin-hadoop2.6" >> ~/.profile && export SPARK_HOME=/home/vagrant/spark-1.6.0-bin-hadoop2.6
+
+sudo echo "export SPARK_HOME=/home/vagrant/spark" >> ~/.profile && export SPARK_HOME=/home/vagrant/spark
 
 sudo ./sbin/start-master.sh - запуск мастера из папки со spark
 sudo ./sbin/start-slave.sh spark://node1:7077 - запуск slave
@@ -18,12 +20,10 @@ sudo ./sbin/start-slave.sh spark://node1:7077 - запуск slave
 localhost:8080/ - веб интерфейс spark
 
 
-sudo cp conf/spark-env.sh.template conf/spark-env.sh
-sudo echo "SPARK_MASTER_IP='192.168.55.11'" >> conf/spark-env.sh
+sudo cp conf/spark-env.sh.template conf/spark-env.sh && sudo chmod 777 conf/spark-env.sh && sudo echo "SPARK_MASTER_IP='192.168.55.11'" >> conf/spark-env.sh
 
-sudo cp conf/slaves.template conf/slaves
-node2
-node3
+sudo cp conf/slaves.template conf/slaves && sudo chmod 777 conf/slaves && sudo echo "node2" > conf/slaves && sudo echo "node3" >> conf/slaves
+
 
 
 
